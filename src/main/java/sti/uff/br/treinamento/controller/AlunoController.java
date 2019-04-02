@@ -32,9 +32,20 @@ public class AlunoController {
 
     }
 
-    @GetMapping(value = "obter", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "matricula", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Aluno> obterAlunoPorMatricula(@RequestParam("matricula") String matricula){
         return Optional.ofNullable(alunoService.obterAlunoPorMatricula(matricula))
+                .map(ResponseEntity :: ok)
+                .orElseGet(() -> ResponseEntity.badRequest()
+                        .body(null
+                        )
+                );
+
+    }
+
+    @GetMapping(value = "curso", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Aluno>> obterAlunoPorCurso(@RequestParam("codigo_curso") String codigoCurso){
+        return Optional.ofNullable(alunoService.obterAlunosPorCurso(codigoCurso))
                 .map(ResponseEntity :: ok)
                 .orElseGet(() -> ResponseEntity.badRequest()
                         .body(null
