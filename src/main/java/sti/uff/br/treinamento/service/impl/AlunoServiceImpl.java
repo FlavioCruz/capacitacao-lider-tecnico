@@ -1,9 +1,10 @@
 package sti.uff.br.treinamento.service.impl;
 
+import br.uff.sti.graduacao.academico.model.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sti.uff.br.treinamento.data.AlunoData;
-import sti.uff.br.treinamento.model.Aluno;
+import sti.uff.br.treinamento.data.AlunoSSDAO;
 import sti.uff.br.treinamento.service.AlunoService;
 
 import java.util.List;
@@ -14,13 +15,16 @@ public class AlunoServiceImpl implements AlunoService {
     @Autowired
     private AlunoData alunoData;
 
+    @Autowired
+    AlunoSSDAO alunoDAO;
+
     /**
      * lista todos os alunos do sistema
      * @return {@link List<Aluno>}
      */
     @Override
-    public List<Aluno> obterTodosAlunos() {
-        return alunoData.obterTodosAlunos();
+    public Aluno obterTodosAlunos() {
+        return alunoDAO.getAlunoByMatricula("113031015");
     }
 
     /**
@@ -30,7 +34,7 @@ public class AlunoServiceImpl implements AlunoService {
      */
     @Override
     public List<Aluno> obterAlunosPorCurso(String codigo){
-        return alunoData.obterAlunosPorCurso(codigo);
+        return null;//lunoData.obterAlunosPorCurso(codigo);
     }
 
     /**
@@ -40,7 +44,7 @@ public class AlunoServiceImpl implements AlunoService {
      */
     @Override
     public Aluno obterAlunoPorMatricula(String matricula) {
-        return alunoData.obterAlunoPorMatricula(matricula);
+        return null;//alunoData.obterAlunoPorMatricula(matricula);
     }
 
     /**
@@ -50,7 +54,7 @@ public class AlunoServiceImpl implements AlunoService {
      */
     @Override
     public String criarAluno(Aluno aluno) {
-        return alunoData.criarAluno(aluno);
+        return "";//alunoData.criarAluno(aluno);
     }
 
     /**
@@ -60,6 +64,6 @@ public class AlunoServiceImpl implements AlunoService {
      */
     @Override
     public boolean deletarAluno(Aluno aluno) {
-        return alunoData.deletarAluno(aluno);
+        return false;//alunoData.deletarAluno(aluno);
     }
 }

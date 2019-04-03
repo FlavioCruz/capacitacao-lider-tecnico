@@ -1,10 +1,10 @@
 package sti.uff.br.treinamento.data;
 
-import sti.uff.br.treinamento.model.Aluno;
+import br.uff.sti.graduacao.academico.model.Aluno;
 
 import java.util.List;
 
-public interface AlunoData {    /**
+public interface AlunoData {//extends JpaRepository<Aluno, Long> {
 
 
     /**
@@ -12,7 +12,7 @@ public interface AlunoData {    /**
      * @param matricula {@link String}
      * @return {@link Aluno}
      */
-    Aluno obterAlunoPorMatricula( String matricula);
+    Aluno obterAlunoPorMatricula(String matricula);
 
     /**
      * lista todos os alunos do sistema
@@ -40,5 +40,7 @@ public interface AlunoData {    /**
      * @return {@link Boolean}
      */
     boolean deletarAluno(Aluno aluno);
+
+    Aluno findByMatricula(String matricula);
 
 }

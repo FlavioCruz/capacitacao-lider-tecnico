@@ -9,7 +9,7 @@ import lombok.Setter;
 public class Materia {
 
     @Getter @Setter
-    private long id;
+    private String codigo;
     @Getter @Setter
     private String nome;
 

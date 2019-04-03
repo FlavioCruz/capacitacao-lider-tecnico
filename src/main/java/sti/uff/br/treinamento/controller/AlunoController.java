@@ -1,6 +1,7 @@
 package sti.uff.br.treinamento.controller;
 
 
+import br.uff.sti.graduacao.academico.model.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sti.uff.br.treinamento.model.Aluno;
 import sti.uff.br.treinamento.service.AlunoService;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class AlunoController {
     private AlunoService alunoService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Aluno>> obterTodosALunos(){
+    public ResponseEntity<Aluno> obterTodosALunos(){
         return Optional.ofNullable(alunoService.obterTodosAlunos())
                 .map(ResponseEntity :: ok)
                 .orElseGet(() -> ResponseEntity.badRequest()

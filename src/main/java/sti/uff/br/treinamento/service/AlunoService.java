@@ -1,6 +1,8 @@
 package sti.uff.br.treinamento.service;
 
-import sti.uff.br.treinamento.model.Aluno;
+
+
+import br.uff.sti.graduacao.academico.model.Aluno;
 
 import java.util.List;
 
@@ -10,7 +12,7 @@ public interface AlunoService {
      * lista todos os alunos do sistema
      * @return {@link List<Aluno>}
      */
-    List<Aluno> obterTodosAlunos();
+    Aluno obterTodosAlunos();
 
     /**
      * Lista todos os alunos de dado curso
