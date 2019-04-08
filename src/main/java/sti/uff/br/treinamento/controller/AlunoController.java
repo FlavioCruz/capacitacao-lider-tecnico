@@ -5,6 +5,7 @@ import br.uff.sti.graduacao.academico.model.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +33,7 @@ public class AlunoController {
 
     }
 
-    @GetMapping(value = "matricula", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/matricula", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Aluno> obterAlunoPorMatricula(@RequestParam("matricula") String matricula){
         return Optional.ofNullable(alunoService.obterAlunoPorMatricula(matricula))
                 .map(ResponseEntity :: ok)
@@ -43,14 +44,21 @@ public class AlunoController {
 
     }
 
-    @GetMapping(value = "curso", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Aluno>> obterAlunoPorCurso(@RequestParam("codigo_curso") String codigoCurso){
-        return Optional.ofNullable(alunoService.obterAlunosPorCurso(codigoCurso))
+    @GetMapping(value = "/curso", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Aluno>> obterAlunoPorCurso(@RequestParam("matricula") String matricula){
+        return Optional.ofNullable(alunoService.obterAlunosPorCurso(matricula))
                 .map(ResponseEntity :: ok)
                 .orElseGet(() -> ResponseEntity.badRequest()
                         .body(null
                         )
                 );
 
+    }
+
+    @GetMapping(value="listar", produces = MediaType.TEXT_HTML_VALUE)
+    public String main(Model model){
+        model.addAttribute("aluno", obterAlunoPorMatricula("113031015"));
+
+        return "listar_aluno.html";
     }
 }

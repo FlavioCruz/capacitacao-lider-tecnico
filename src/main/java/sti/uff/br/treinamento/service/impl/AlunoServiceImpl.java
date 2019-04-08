@@ -24,17 +24,20 @@ public class AlunoServiceImpl implements AlunoService {
      */
     @Override
     public Aluno obterTodosAlunos() {
-        return alunoDAO.getAlunoByMatricula("113031015");
+        return null;
     }
 
     /**
      * Lista todos os alunos de dado curso
-     * @param codigo {@link String}
+     * @param matricula {@link String}
      * @return {@link List<Aluno>}
      */
     @Override
-    public List<Aluno> obterAlunosPorCurso(String codigo){
-        return null;//lunoData.obterAlunosPorCurso(codigo);
+    public List<Aluno> obterAlunosPorCurso(String matricula){
+        String substPeriodo = matricula.substring(0, 3);
+        String substSeqAluno = matricula.substring(matricula.length() - 3);
+        String codigoCurso = matricula.replace(substPeriodo, "").replace(substSeqAluno, "");
+        return alunoDAO.obterAlunosPorCurso(Long.parseLong(codigoCurso));
     }
 
     /**
@@ -44,7 +47,7 @@ public class AlunoServiceImpl implements AlunoService {
      */
     @Override
     public Aluno obterAlunoPorMatricula(String matricula) {
-        return null;//alunoData.obterAlunoPorMatricula(matricula);
+        return alunoDAO.getAlunoByMatricula(matricula);
     }
 
     /**
