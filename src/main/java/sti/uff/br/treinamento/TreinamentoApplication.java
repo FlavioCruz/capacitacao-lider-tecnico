@@ -7,11 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import sti.uff.br.treinamento.data.AlunoSSDAO;
+import sti.uff.br.treinamento.data.AlunoDAO;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
-@EnableJpaRepositories(basePackageClasses = {AlunoSSDAO.class},
+@EnableJpaRepositories(basePackageClasses = {AlunoDAO.class},
 		transactionManagerRef = "transactionManager",
 		entityManagerFactoryRef = "entityManagerFactory")
 @Import(value = { GraduacaoAcademicoConfiguration.class })

@@ -5,17 +5,17 @@ import br.uff.sti.graduacao.academico.model.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import sti.uff.br.treinamento.service.AlunoService;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/aluno")
 public class AlunoController {
 
@@ -55,10 +55,10 @@ public class AlunoController {
 
     }
 
-    @GetMapping(value="listar", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value="/listar", produces = MediaType.TEXT_HTML_VALUE)
     public String main(Model model){
-        model.addAttribute("aluno", obterAlunoPorMatricula("113031015"));
+        model.addAttribute("alunos", alunoService.obterAlunosPorCurso("113031015"));
 
-        return "listar_aluno.html";
+        return "listar_aluno";
     }
 }

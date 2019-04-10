@@ -16,10 +16,10 @@ public interface AlunoService {
 
     /**
      * Lista todos os alunos de dado curso
-     * @param codigo {@link String}
+     * @param matricula {@link String}
      * @return {@link List<Aluno>}
      */
-    List<Aluno> obterAlunosPorCurso(String codigo);
+    List<Aluno> obterAlunosPorCurso(String matricula);
 
     /**
      * recupera um aluno pela matrícula informada

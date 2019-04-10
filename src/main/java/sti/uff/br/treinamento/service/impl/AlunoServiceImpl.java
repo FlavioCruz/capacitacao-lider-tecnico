@@ -3,8 +3,8 @@ package sti.uff.br.treinamento.service.impl;
 import br.uff.sti.graduacao.academico.model.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sti.uff.br.treinamento.data.AlunoDAO;
 import sti.uff.br.treinamento.data.AlunoData;
-import sti.uff.br.treinamento.data.AlunoSSDAO;
 import sti.uff.br.treinamento.service.AlunoService;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class AlunoServiceImpl implements AlunoService {
     private AlunoData alunoData;
 
     @Autowired
-    AlunoSSDAO alunoDAO;
+    AlunoDAO alunoDAO;
 
     /**
      * lista todos os alunos do sistema
