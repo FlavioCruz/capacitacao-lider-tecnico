@@ -3,8 +3,7 @@ package sti.uff.br.treinamento.service.impl;
 import br.uff.sti.graduacao.academico.model.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sti.uff.br.treinamento.data.AlunoDAO;
-import sti.uff.br.treinamento.data.AlunoData;
+import sti.uff.br.treinamento.data.AlunosDAO;
 import sti.uff.br.treinamento.service.AlunoService;
 
 import java.util.List;
@@ -13,10 +12,7 @@ import java.util.List;
 public class AlunoServiceImpl implements AlunoService {
 
     @Autowired
-    private AlunoData alunoData;
-
-    @Autowired
-    AlunoDAO alunoDAO;
+    AlunosDAO alunosDAO;
 
     /**
      * lista todos os alunos do sistema
@@ -37,7 +33,7 @@ public class AlunoServiceImpl implements AlunoService {
         String substPeriodo = matricula.substring(0, 3);
         String substSeqAluno = matricula.substring(matricula.length() - 3);
         String codigoCurso = matricula.replace(substPeriodo, "").replace(substSeqAluno, "");
-        return alunoDAO.obterAlunosPorCurso(Long.parseLong(codigoCurso));
+        return alunosDAO.obterAlunosPorCurso(Long.parseLong(codigoCurso));
     }
 
     /**
@@ -47,7 +43,7 @@ public class AlunoServiceImpl implements AlunoService {
      */
     @Override
     public Aluno obterAlunoPorMatricula(String matricula) {
-        return alunoDAO.getAlunoByMatricula(matricula);
+        return alunosDAO.getAlunoByMatricula(matricula);
     }
 
     /**

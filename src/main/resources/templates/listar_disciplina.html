@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>turmas</title>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1></h1>
+        <h3>
+            <span>Buscar disciplina</span>
+            <form action="#" th:action="@{/inscricao/listar}" method="post">
+                <p> Insira sua matrícula: <input type="text" name="matricula" /></p>
+                <p><button type="submit" >Buscar</button></p>
+                <!--        th:object="${matricula}"-->
+            </form>
+        </h3>
+
+        <table>
+            <thead>
+            <tr th:if="${!turmas.empty}">
+                <th> Código </th>
+                <th> Nome da Matéria </th>
+                <th> Carga Horária </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${turmas.empty}">
+
+                </tr>
+
+                <tr th:each="turma : ${turmas}">
+                    <form action="#" th:action="@{/inscricao/inscrever}" method="post">
+                        <input type="hidden" name="id" th:value="${turma.disciplina.idDisciplina}"/>
+                        <input type="hidden" name="matricula" th:value="${matricula}" />
+                        <td><span th:text="${turma.disciplina.codigo}"> Author </span></td>
+                        <td><span th:text="${turma.disciplina.nome}"> Title </span></td>
+                        <td><span th:text="${turma.disciplina.numeroHoras}"> Title </span></td>
+                        <td><button type="submit" >Inscrever</button></td>
+                    </form>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
