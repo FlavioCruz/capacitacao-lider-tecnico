@@ -29,6 +29,7 @@
                 <th> Código </th>
                 <th> Nome da Matéria </th>
                 <th> Carga Horária </th>
+                <th> Turma </th>
             </tr>
             </thead>
             <tbody>
@@ -40,8 +41,9 @@
                     <form action="#" th:action="@{/inscricao/inscrever}" method="post">
                         <input type="hidden" name="id" th:value="${turma.disciplina.idDisciplina}"/>
                         <input type="hidden" name="matricula" th:value="${matricula}" />
-                        <td><span th:text="${turma.disciplina.codigo}"> Author </span></td>
-                        <td><span th:text="${turma.disciplina.nome}"> Title </span></td>
+                        <td><span th:text="${turma.disciplina.codigo}"> </span></td>
+                        <td><span th:text="${turma.disciplina.nome}"> </span></td>
+                        <td><span th:text="${turma.codigo}"> </span></td>
                         <td><span th:text="${turma.disciplina.numeroHoras}"> Title </span></td>
                         <td><button type="submit" >Inscrever</button></td>
                     </form>

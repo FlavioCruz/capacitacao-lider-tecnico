@@ -9,7 +9,7 @@ public interface DisciplinaService {
 
     Disciplina obterDisciplinaPorCodigo(String codigoDIsciplina);
 
-    List<Turma> obterDisciplinasPorCurso(String matricula);
+    List<Turma> obterDisciplinasPorCurso(String matricula, int anoSemestre);
 
     String criarDisciplina(Disciplina disciplina);
 

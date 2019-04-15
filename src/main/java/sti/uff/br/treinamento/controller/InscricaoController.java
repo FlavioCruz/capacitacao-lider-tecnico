@@ -32,7 +32,7 @@ public class InscricaoController {
 
     @PostMapping("/listar")
     public String listarDisciplinas(@ModelAttribute("matricula") String matricula, Model model){
-        model.addAttribute("turmas", disciplinaService.obterDisciplinasPorCurso(matricula));
+        model.addAttribute("turmas", disciplinaService.obterDisciplinasPorCurso(matricula, 20191));
         model.addAttribute("matricula", matricula);
         return "listar_disciplina";
     }

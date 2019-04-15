@@ -19,10 +19,29 @@ public interface DisciplinasDAO extends CrudRepository<Disciplina, Long> {
 //                    " left join aluno a on a.ididentificador = ac.idaluno\n" +
 //                    " where a.matricula = ?1",
 //    nativeQuery = true)
-    @Query(" SELECT t FROM AlunoCurriculo ac " +
-            " INNER JOIN DisciplinaCurriculo dc " +
-            " INNER JOIN dc.curriculo c " +
-            " INNER JOIN ac.aluno a " +
-            " INNER JOIN FETCH Turma t on t.disciplina = dc.disciplina ")
-    List<Turma> obterDisciplinasPorMatricula(String matricula);
+
+
+
+//    @Query(value = "select t.* from turma t\n" +
+//            " inner join disciplina d on d.iddisciplina = t.iddisciplina\n" +
+//            " inner join CUR_DISCIPLINACURRICULO dc on dc.iddisciplina = d.iddisciplina\n" +
+//            " inner join cur_curriculo c on c.idcurriculo = dc.idcurriculo and c.idversaocurriculo = dc.idversaocurriculo\n" +
+//            " inner join alunocurriculo ac on ac.idcurriculo = c.idcurriculo\n" +
+//            " inner join aluno a on a.ididentificador = ac.idaluno\n" +
+//            " where a.matricula = '113031015'\n" +
+//            " and t.STATUS in (1, 2, 3, 4)\n" +
+//            " and t.anosemestre = '20191'\n" +
+//            " and t.vagasregular is not null\n",
+//            nativeQuery = true)
+
+    @Query( " SELECT distinct t FROM Turma t                                                                                " +
+            " INNER JOIN DisciplinaCurriculo dc ON dc.disciplina.idDisciplina = t.disciplina.idDisciplina                   " +
+            " INNER JOIN Curriculo c on c.versaoCurriculoCorrente.idVersaoCurriculo = dc.versaoCurriculo.idVersaoCurriculo  " +
+            " INNER JOIN AlunoCurriculo ac on ac.curriculo.idCurriculo = c.idCurriculo                                      " +
+            " INNER JOIN ac.aluno a on a.idIdentificador = ac.aluno.idIdentificador                                         " +
+            " INNER JOIN FETCH Turma t on t.disciplina = dc.disciplina                                                      " +
+            " WHERE a.matricula = ?1                                                                                        " +
+            " AND t.status in (1, 2, 3, 4)                                                                                  " +
+            " AND t.anoSemestre = ?2                                                                                        ")
+    List<Turma> obterDisciplinasPorMatricula(String matricula, int anoSemestre);
 }
