@@ -15,7 +15,9 @@ import java.util.stream.Collectors;
 public class DisciplinaServiceImpl implements DisciplinaService {
 
     @Autowired
-    DisciplinasDAO disciplinasDAO;
+    private DisciplinasDAO disciplinasDAO;
+
+    private DisciplinasDAO swapDAO;
 
     @Override
     public Disciplina obterDisciplinaPorCodigo(String codigoDisciplina) {
@@ -31,12 +33,6 @@ public class DisciplinaServiceImpl implements DisciplinaService {
                                                 )
                                                 .sorted((t1, t2) -> t1.getDisciplina().getNome().compareTo(t2.getDisciplina().getNome()))
                                                 .collect(Collectors.toList());
-//        List<Turma> turmas = new ArrayList<>();
-//        for(Disciplina disciplina : disciplinas){
-//            Turma t = new Turma();
-//            t.setDisciplina(disciplina);
-//            turmas.add(t);
-//        }
         return disciplinas;
     }
 
@@ -48,5 +44,15 @@ public class DisciplinaServiceImpl implements DisciplinaService {
     @Override
     public boolean deletarDisciplina(Disciplina disciplina) {
         return false;
+    }
+
+
+    public void setMockDAO(DisciplinasDAO dao){
+        swapDAO = disciplinasDAO;
+        disciplinasDAO = dao;
+    }
+
+    public void unsetMockDAO(){
+        disciplinasDAO = swapDAO;
     }
 }
