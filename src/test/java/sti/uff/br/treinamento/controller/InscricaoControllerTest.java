@@ -10,13 +10,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @SpringBootTest
 public class InscricaoControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+//    @Autowired
+//    private MockMvc mockMvc;
 
-    @Before
-    public void setup(){
-        this.mockMvc = MockMvcBuilders.standaloneSetup(new InscricaoController()).build();
-    }
+//    @Before
+//    public void setup(){
+//        this.mockMvc = MockMvcBuilders.standaloneSetup(new InscricaoController()).build();
+//    }
 
     @Test
     public void verifica_se_cria_uma_matricula_vazia(){

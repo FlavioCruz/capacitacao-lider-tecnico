@@ -12,7 +12,9 @@ import java.util.List;
 public class AlunoServiceImpl implements AlunoService {
 
     @Autowired
-    AlunosDAO alunosDAO;
+    private AlunosDAO alunosDAO;
+
+    private AlunosDAO swapDAO;
 
     /**
      * lista todos os alunos do sistema
@@ -64,5 +66,14 @@ public class AlunoServiceImpl implements AlunoService {
     @Override
     public boolean deletarAluno(Aluno aluno) {
         return false;//alunoData.deletarAluno(aluno);
+    }
+
+    public void setMockDAO(AlunosDAO dao){
+        swapDAO = alunosDAO;
+        alunosDAO = dao;
+    }
+
+    public void unsetMockDAO(){
+        alunosDAO = swapDAO;
     }
 }

@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 public class DisciplinaServiceTest {
 
     @Autowired
-    DisciplinaService service;
+    private DisciplinaService service;
 
     private static final DisciplinasDAO disciplinasDAO = mock(DisciplinasDAO.class);
 

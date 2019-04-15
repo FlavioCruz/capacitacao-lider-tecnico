@@ -3,6 +3,7 @@ package sti.uff.br.treinamento.service;
 
 
 import br.uff.sti.graduacao.academico.model.Aluno;
+import sti.uff.br.treinamento.data.AlunosDAO;
 
 import java.util.List;
 
@@ -41,5 +42,9 @@ public interface AlunoService {
      * @return {@link Boolean}
      */
     boolean deletarAluno(Aluno aluno);
+
+    void setMockDAO(AlunosDAO dao);
+
+    void unsetMockDAO();
 
 }
