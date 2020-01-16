@@ -1,6 +1,9 @@
 package sti.uff.br.treinamento.service;
 
-import sti.uff.br.treinamento.model.Aluno;
+
+
+import br.uff.sti.graduacao.academico.model.Aluno;
+import sti.uff.br.treinamento.data.AlunosDAO;
 
 import java.util.List;
 
@@ -10,14 +13,14 @@ public interface AlunoService {
      * lista todos os alunos do sistema
      * @return {@link List<Aluno>}
      */
-    List<Aluno> obterTodosAlunos();
+    Aluno obterTodosAlunos();
 
     /**
      * Lista todos os alunos de dado curso
-     * @param codigo {@link String}
+     * @param matricula {@link String}
      * @return {@link List<Aluno>}
      */
-    List<Aluno> obterAlunosPorCurso(String codigo);
+    List<Aluno> obterAlunosPorCurso(String matricula);
 
     /**
      * recupera um aluno pela matrícula informada
@@ -39,5 +42,9 @@ public interface AlunoService {
      * @return {@link Boolean}
      */
     boolean deletarAluno(Aluno aluno);
+
+    void setMockDAO(AlunosDAO dao);
+
+    void unsetMockDAO();
 
 }

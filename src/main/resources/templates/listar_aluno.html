@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Alunos</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+    <main role="main" class="container">
+
+        <div class="starter-template">
+            <h1>Alunos</h1>
+            <h3>
+                <span>Buscar aluno</span>
+<!--                <span th:text="${aluno.identificacao.nome}"></span>-->
+            </h3>
+
+            <table>
+                <thead>
+                <tr>
+                    <th> Matricula </th>
+                    <th> Nome </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${alunos.empty}">
+
+                </tr>
+                <tr th:each="aluno : ${alunos}">
+                    <td><span th:text="${aluno.matricula}"> Author </span></td>
+                    <td><span th:text="${aluno.identificacao.nome}"> Title </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
